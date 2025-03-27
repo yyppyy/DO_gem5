@@ -1,0 +1,7 @@
+protocol "WT_MESI";
+include "RubySlicc_interfaces.slicc";
+include "DO_MESI-msg.sm";
+include "WT_MESI-L1cache.sm";
+include "WT_MESI-L2cache.sm";
+include "DO_MESI-dir.sm";
+include "DO_MESI-dma.sm";

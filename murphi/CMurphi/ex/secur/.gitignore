@@ -1,0 +1,5 @@
+*.cache
+*.disk
+*.cpp
+ns
+ns-old

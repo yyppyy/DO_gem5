@@ -1,0 +1,48 @@
+ # SPDX-FileCopyrightText: Copyright (c) 2024 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ # SPDX-License-Identifier: LicenseRef-NvidiaProprietary
+ #
+ # NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+ # property and proprietary rights in and to this material, related
+ # documentation and any modifications thereto. Any use, reproduction,
+ # disclosure or distribution of this material and related documentation
+ # without an express license agreement from NVIDIA CORPORATION or
+ # its affiliates is strictly prohibited.
+
+
+#=========================================================================
+# Modular C++ Build System Subproject Autoconf Fragment
+#=========================================================================
+# Please read the documenation in 'mcppbs-uguide.txt' for more details
+# on how the Modular C++ Build System works.
+
+MCPPBS_SUBPROJECT([Chai],[cxxopts,appl])
+
+AC_CACHE_CHECK(
+ [whether system supports C++14 features],
+ [ac_cv_support_cxx14],
+[
+  AC_LANG([C++])
+
+  my_save_cxxflags="$CXXFLAGS"
+  CXXFLAGS="-I../cxxopts -I../appl -I../brgamo -std=c++14"
+
+  AC_LINK_IFELSE([AC_LANG_PROGRAM(
+  [[
+    #include <iostream>
+  ]],[[
+    auto f = [&]( int x ) -> int { return x + 1; };
+    int x = 1;
+    int y = f(x);
+  ]])],
+   [ac_cv_support_cxx14="yes"],
+   [ac_cv_support_cxx14="no"])
+
+   CXXFLAGS="$my_save_cxxflags"
+])
+
+AS_IF([test "$ac_cv_support_cxx14" = "no"],
+[
+  AC_MSG_ERROR([A compiler with support for C++14 language features is required.])
+],[
+  AS_VAR_APPEND([Chai_cppflags]," -std=c++14")
+])

@@ -1,0 +1,33 @@
+ # SPDX-FileCopyrightText: Copyright (c) 2024 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ # SPDX-License-Identifier: LicenseRef-NvidiaProprietary
+ #
+ # NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+ # property and proprietary rights in and to this material, related
+ # documentation and any modifications thereto. Any use, reproduction,
+ # disclosure or distribution of this material and related documentation
+ # without an express license agreement from NVIDIA CORPORATION or
+ # its affiliates is strictly prohibited.
+
+
+#=========================================================================
+# Modular C++ Build System Subproject Makefile Fragment
+#=========================================================================
+# Please read the documenation in 'mcppbs-uguide.txt' for more details
+# on how the Modular C++ Build System works.
+
+Pannotia_intdeps  = @Pannotia_intdeps@
+Pannotia_cppflags = @Pannotia_cppflags@
+Pannotia_ldflags  = @Pannotia_ldflags@
+Pannotia_libs     = @Pannotia_libs@
+
+Pannotia_hdrs += \
+  Utils.hh \
+
+Pannotia_srcs = \
+  Utils.cc \
+
+Pannotia_install_prog_srcs = \
+  PR.cc \
+  SSSP.cc \
+  PR_no_local_wt.cc \
+  SSSP_no_local_wt.cc \

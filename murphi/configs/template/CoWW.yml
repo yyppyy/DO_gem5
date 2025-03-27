@@ -1,0 +1,58 @@
+ # SPDX-FileCopyrightText: Copyright (c) 2024 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ # SPDX-License-Identifier: LicenseRef-NvidiaProprietary
+ #
+ # NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+ # property and proprietary rights in and to this material, related
+ # documentation and any modifications thereto. Any use, reproduction,
+ # disclosure or distribution of this material and related documentation
+ # without an express license agreement from NVIDIA CORPORATION or
+ # its affiliates is strictly prohibited.
+
+
+VAL_COUNT: 3
+ADR_COUNT: 1
+U_NET_MAX: 5
+CPU_COUNT: 1
+CACHE_L1_COUNT: 1
+DIR_COUNT: 2
+INSTR_COUNT: 3
+CHECK_FORBIDDEN: 1
+ADDR_TO_DIR:
+  - ADDR: 0
+    DIR: 0
+LITMUS_TEST:
+  - CPU_IDX: 0
+    INSTR_STREAM:
+      - INSTR_IDX: 0
+        INSTR_ACC: "store"
+        INSTR_CST: "RLX"
+        INSTR_ADDR: 0
+        INSTR_VAL: 1
+      - INSTR_IDX: 1
+        INSTR_ACC: "store"
+        INSTR_CST: "RLX"
+        INSTR_ADDR: 0
+        INSTR_VAL: 2
+      - INSTR_IDX: 2
+        INSTR_ACC: "load"
+        INSTR_CST: "RLX"
+        INSTR_ADDR: 0
+        INSTR_VAL: 0
+FORBIDDEN_OUTCOME:
+  - OUTCOME_IDX: 0
+    LOAD_OUTCOME:
+    - CPU_IDX: 0
+      INSTR_IDX: 2
+      INSTR_VAL: 1
+# for RRC
+TS_MAX: 2
+CNT_MAX: 2
+# ARM CoWW ()
+# "CoWW"
+# {
+# P0:R5=x; P0:R1=1; P0:R2=2;
+# }
+# P0           ;
+# str R1,R5 ;
+# str R2,R5 ;
+# ~exists (x=1)

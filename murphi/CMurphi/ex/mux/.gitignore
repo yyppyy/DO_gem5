@@ -1,0 +1,8 @@
+*.cache
+*.disk
+*.cpp
+2_peterson
+dek
+mcslock1
+mcslock2
+n_peterson

@@ -1,0 +1,6 @@
+*.cache
+*.disk
+*.cpp
+turbogas
+turbogas.cache
+turbogas.disk

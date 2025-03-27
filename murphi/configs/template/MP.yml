@@ -1,0 +1,71 @@
+ # SPDX-FileCopyrightText: Copyright (c) 2024 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ # SPDX-License-Identifier: LicenseRef-NvidiaProprietary
+ #
+ # NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+ # property and proprietary rights in and to this material, related
+ # documentation and any modifications thereto. Any use, reproduction,
+ # disclosure or distribution of this material and related documentation
+ # without an express license agreement from NVIDIA CORPORATION or
+ # its affiliates is strictly prohibited.
+
+
+VAL_COUNT: 2
+ADR_COUNT: 2
+U_NET_MAX: 5
+CPU_COUNT: 2
+CACHE_L1_COUNT: 2
+DIR_COUNT: 2
+INSTR_COUNT: 2
+CHECK_FORBIDDEN: 1
+CHECK_EXPECTED: 1
+ADDR_TO_DIR:
+  - ADDR: 0
+    DIR: 0
+  - ADDR: 1
+    DIR: 0
+LITMUS_TEST:
+  - CPU_IDX: 0
+    INSTR_STREAM:
+      - INSTR_IDX: 0
+        INSTR_ACC: "store"
+        INSTR_CST: "RLX"
+        INSTR_ADDR: 0
+        INSTR_VAL: 1
+      - INSTR_IDX: 1
+        INSTR_ACC: "store"
+        INSTR_CST: "REL"
+        INSTR_ADDR: 1
+        INSTR_VAL: 1
+  - CPU_IDX: 1
+    INSTR_STREAM:
+      - INSTR_IDX: 0
+        INSTR_ACC: "load"
+        INSTR_CST: "ACQ"
+        INSTR_ADDR: 1
+        INSTR_VAL: 0
+      - INSTR_IDX: 1
+        INSTR_ACC: "load"
+        INSTR_CST: "RLX"
+        INSTR_ADDR: 0
+        INSTR_VAL: 0
+FORBIDDEN_OUTCOME:
+  - OUTCOME_IDX: 0
+    LOAD_OUTCOME:
+    - CPU_IDX: 1
+      INSTR_IDX: 0
+      INSTR_VAL: 1
+    - CPU_IDX: 1
+      INSTR_IDX: 1
+      INSTR_VAL: 0
+EXPECTED_OUTCOME:
+  - OUTCOME_IDX: 0
+    LOAD_OUTCOME:
+    - CPU_IDX: 1
+      INSTR_IDX: 0
+      INSTR_VAL: 1
+    - CPU_IDX: 1
+      INSTR_IDX: 1
+      INSTR_VAL: 1
+# for RRC
+TS_MAX: 2
+CNT_MAX: 2

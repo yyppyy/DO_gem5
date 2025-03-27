@@ -1,0 +1,13 @@
+config,proc_epoch CXL,proc_stCnt CXL,proc_pendingEpochs CXL,dir_stCnt CXL,dir_notiCnt CXL,dir_maxCommittedEpochs CXL,dir_network_buffer CXL,proc_total CXL,dir_total CXL,proc_epoch UPI,proc_stCnt UPI,proc_pendingEpochs UPI,dir_stCnt UPI,dir_notiCnt UPI,dir_maxCommittedEpochs UPI,dir_network_buffer UPI,proc_total UPI,dir_total UPI
+PAD 8 abs,1,32,2,0,0,64,0,35,64,1,32,2,0,0,64,0,35,64
+PR 8 abs,1,32,2,304,72,64,160,35,600,1,32,2,304,72,64,160,35,600
+SSSP 8 abs,1,32,0,0,0,64,0,33,64,1,32,0,0,0,64,0,33,64
+ATA 8 abs,1,32,3,304,144,64,992,36,1504,1,32,3,304,72,64,672,36,1112
+PAD 4 abs,1,16,2,0,0,32,0,19,32,1,16,2,0,0,32,0,19,32
+PR 4 abs,1,16,2,148,28,32,32,19,240,1,16,2,148,28,32,32,19,240
+SSSP 4 abs,1,16,0,0,0,32,0,17,32,1,16,0,0,0,32,0,17,32
+ATA 4 abs,1,16,3,148,28,32,256,20,464,1,16,3,148,28,32,160,20,368
+PAD 2 abs,1,8,2,0,0,16,0,11,16,1,8,2,0,0,16,0,11,16
+PR 2 abs,1,8,2,72,10,16,32,11,130,1,8,2,72,10,16,32,11,130
+SSSP 2 abs,1,8,0,0,0,16,0,9,16,1,8,0,0,0,16,0,9,16
+ATA 2 abs,1,8,3,72,10,16,256,12,354,1,8,3,72,10,16,160,12,258

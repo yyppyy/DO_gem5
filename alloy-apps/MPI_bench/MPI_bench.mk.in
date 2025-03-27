@@ -1,0 +1,37 @@
+ # SPDX-FileCopyrightText: Copyright (c) 2024 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+ # SPDX-License-Identifier: LicenseRef-NvidiaProprietary
+ #
+ # NVIDIA CORPORATION, its affiliates and licensors retain all intellectual
+ # property and proprietary rights in and to this material, related
+ # documentation and any modifications thereto. Any use, reproduction,
+ # disclosure or distribution of this material and related documentation
+ # without an express license agreement from NVIDIA CORPORATION or
+ # its affiliates is strictly prohibited.
+
+
+#=========================================================================
+# Modular C++ Build System Subproject Makefile Fragment
+#=========================================================================
+# Please read the documenation in 'mcppbs-uguide.txt' for more details
+# on how the Modular C++ Build System works.
+
+MPI_bench_intdeps  = @MPI_bench_intdeps@
+MPI_bench_cppflags = @MPI_bench_cppflags@
+MPI_bench_ldflags  = @MPI_bench_ldflags@
+MPI_bench_libs     = @MPI_bench_libs@
+
+MPI_bench_hdrs += \
+  Collectives.hh \
+  Utils.hh \
+
+MPI_bench_srcs = \
+
+MPI_bench_install_prog_srcs = \
+  run_allreduce.cc \
+  run_scatter.cc \
+  run_gather.cc \
+  run_alltoall.cc \
+  run_reduce.cc \
+  run_sendrecv.cc \
+  run_sendrecv_pad.cc \
+  run_barrier.cc \

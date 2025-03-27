@@ -1,0 +1,13 @@
+*.cache
+*.disk
+*.cpp
+adash
+adashbug
+cache3
+eadash
+ldash
+list6
+list6too
+mcslock1
+mcslock2
+n_peterson
